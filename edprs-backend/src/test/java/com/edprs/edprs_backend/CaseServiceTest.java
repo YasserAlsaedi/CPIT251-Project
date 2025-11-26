@@ -77,4 +77,37 @@ public class CaseServiceTest {
         assertEquals("Pending", result.getStatus()); 
         assertNull(result.getAssignedUnit()); 
     }
+    
+    
+    @Test
+    public void testAcceptCase_Success() {
+        // 1. SETUP
+        Long caseId = 10L;
+        Long unitId = 5L;
+
+        casee mockCase = new casee();
+        mockCase.setId(caseId);
+        mockCase.setStatus("Pending");
+
+        unit mockUnit = new unit();
+        mockUnit.setId(unitId);
+        mockUnit.setStatus("READY");
+
+        // 2. MOCK
+        when(caseRepository.findById(caseId)).thenReturn(Optional.of(mockCase));
+        when(unitRepository.findById(unitId)).thenReturn(Optional.of(mockUnit));
+        when(caseRepository.save(any(casee.class))).thenAnswer(i -> i.getArguments()[0]);
+
+        // 3. EXECUTE
+        casee result = caseService.acceptCase(caseId, unitId);
+
+        // 4. VERIFY
+        assertEquals("Accepted", result.getStatus());       // Case should be Accepted
+        assertEquals("ON_MISSION", mockUnit.getStatus());   // Unit should be ON_MISSION
+        assertEquals(mockUnit, result.getAssignedUnit());   // Unit should be linked
+        
+        // Verify DB saves and Alert sent
+        verify(unitRepository).save(mockUnit);
+        verify(messagingTemplate).convertAndSend(eq("/topic/unit-alerts"), eq("CASE TAKEN"));
+    }
 }
