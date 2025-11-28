@@ -1,0 +1,64 @@
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+--
+-- Host: localhost    Database: edprs
+-- ------------------------------------------------------
+-- Server version	9.5.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '942e6b7d-be52-11f0-9a4a-089798e33a5d:1-812';
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `unit_code` varchar(255) DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_r43af9ap4edm43mmtq01oddj6` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'$2a$10$sJdVWP9j7.9QMmizfi6HQ.Uqc9s1vOfTtKOZpxt1R6fyKoS/tdITC','SUPERVISOR',NULL,'admin'),(2,'$2a$10$OAA9FiLU96ekmNCiE4nk4uLexaFfPw9lVxckffMaXPSvmH7SsGk36','PARAMEDIC','AMB-01','medic1'),(3,'$2a$10$nvptIkXSdChWS7ide1QrWu1OAW3cIYcNaCz13VB9YhZtJP6gkS.7S','PARAMEDIC','AMB-01','medic2'),(4,'$2a$10$MYSFIIHWZPes/44iZy5MZeAmYD2w3/bQ7huslZh2Uo.E9paGh7/q.','PARAMEDIC','AMB-02','medic3'),(5,'$2a$10$i.i5BPfNef1uObdgSjiL5OJqNFubaiCuNARkhqn1d/yROYtL3e1GC','PARAMEDIC','AMB-02','medic4'),(6,'$2a$10$d8w/p4hSe2o9Ce77eOeD2.WB0wAUweBDLtwfcw2EJCIhG/5zm/MT.','PARAMEDIC','AMB-03','medic5'),(7,'$2a$10$LHM.PZKp1Ui2VhdF8UqXI.QH.ektmN639CVizI8pgwIkyNnQoIQdS','PARAMEDIC','AMB-03','medic6'),(8,'$2a$10$6LLwzpZklemzHl8ZW0wazeCGZBkWayoifNnkl.RRcIRmpxuJknC4C','PARAMEDIC','AMB-04','medic7'),(9,'$2a$10$jjteLHnU5b495VZhzTGpPOTFmv9XDBDuRjDzbQehoSRtkSFR3X.si','PARAMEDIC','AMB-04','medic8');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-11-27  7:17:10

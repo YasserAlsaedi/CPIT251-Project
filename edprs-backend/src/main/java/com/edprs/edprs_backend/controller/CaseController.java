@@ -1,6 +1,6 @@
 package com.edprs.edprs_backend.controller;
 
-import com.edprs.edprs_backend.model.casee; // Or 'casee'
+import com.edprs.edprs_backend.model.casee; 
 import com.edprs.edprs_backend.service.CaseService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -25,20 +25,20 @@ public class CaseController {
         return caseService.createCase(c);
     }
 
-    // 2. CHECK CASES - ALL (GET)
+    // 2. CHECK CASES, ALL (GET)
     @GetMapping
     public List<casee> getAllCases() {
         return caseService.getAllCases();
     }
 
-    // 3. CHECK CASES - ACTIVE ONLY (GET)
+    // 3. CHECK CASES, ACTIVE ONLY (GET)
     @GetMapping("/active")
     public List<casee> getActive() {
         return caseService.getActiveCases();
     }
 
+    
     // 4. UPDATE STATUS (PUT)
- // ... inside CaseController ...
 
     @PutMapping("/{id}/accept")
     public casee acceptCase(@PathVariable Long id, @RequestParam Long unitId) {
@@ -52,7 +52,7 @@ public class CaseController {
         return caseService.updateCaseDetails(id, c);
     }
     
- // --- NEW: REJECT ENDPOINT ---
+ //   reject endpoint 
     @PutMapping("/{id}/reject")
     public void rejectCase(@PathVariable Long id) {
         caseService.rejectCase(id);

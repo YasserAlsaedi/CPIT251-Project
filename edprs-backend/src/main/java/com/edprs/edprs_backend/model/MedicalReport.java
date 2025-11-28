@@ -15,32 +15,32 @@ public class MedicalReport {
     @JoinColumn(name = "case_id", nullable = false)
     private casee emergencyCase;
 
-    // --- NEW PATIENT INFO ---
+    //  PATIENT INFO 
     private String patientName;
     private Integer age;
     private String gender; // Male, Female
 
-    // --- VITAL SIGNS ---
+    //  VITAL SIGNS 
     private Integer pulse;        // Heart Rate
     private String bloodPressure; 
     private Double temperature;   // Celsius
     private Integer o2Saturation; // %
 
-    // --- CLINICAL INFO ---
+    //  CLINICAL INFO 
     @Column(length = 1000)
     private String chiefComplaint; // Primary reason for call
     
     @Column(length = 2000)
     private String interventions; // What did the paramedic do?
     
-    private String outcome; // Transported, Treated, etc.
+    private String outcome; // Transported, Treated, etc
     
     @Column(length = 2000)
     private String paramedicNotes; // Additional Notes
 
     private LocalDateTime submittedAt;
 
-    // --- GETTERS & SETTERS ---
+    //  GETTERS & SETTERS 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public casee getEmergencyCase() { return emergencyCase; }

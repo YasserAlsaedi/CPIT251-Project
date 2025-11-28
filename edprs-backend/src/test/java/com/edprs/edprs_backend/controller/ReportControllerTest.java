@@ -1,8 +1,8 @@
 package com.edprs.edprs_backend.controller;
 
 import com.edprs.edprs_backend.model.MedicalReport;
-import com.edprs.edprs_backend.model.casee; // Your class name
-import com.edprs.edprs_backend.model.unit;  // Your class name
+import com.edprs.edprs_backend.model.casee; 
+import com.edprs.edprs_backend.model.unit;  
 import com.edprs.edprs_backend.repository.CaseRepository;
 import com.edprs.edprs_backend.repository.ReportRepository;
 import com.edprs.edprs_backend.repository.UnitRepository;
@@ -36,7 +36,7 @@ public class ReportControllerTest {
 
     @Test
     public void testSubmitReport_Success() {
-        // --- 1. DATA SETUP ---
+        // 1. DATA SETUP 
         Long caseId = 100L;
         
         // Create a busy Unit
@@ -59,14 +59,14 @@ public class ReportControllerTest {
         incomingReport.setOutcome("Transported");
         incomingReport.setParamedicNotes("Patient stable.");
 
-        // --- 2. MOCK DATABASE RESPONSES ---
+        // 2. MOCK DATABASE RESPONSES 
         when(caseRepository.findById(caseId)).thenReturn(Optional.of(mockCase));
         when(reportRepository.save(any(MedicalReport.class))).thenAnswer(i -> i.getArguments()[0]);
 
-        // --- 3. EXECUTE THE METHOD ---
+        // 3. EXECUTE THE METHOD 
         MedicalReport result = reportController.submitReport(caseId, incomingReport);
 
-        // --- 4. VERIFY RESULTS ---
+        //  4. VERIFY RESULTS 
         
         // Check 1: Report was returned/saved
         assertNotNull(result);

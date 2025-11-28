@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users") // "users" is better because "user" is a reserved SQL word
+@Table(name = "users") 
 public class user {
 
     @Id
@@ -22,10 +22,10 @@ public class user {
     @Column(nullable = false)
     private String role;
 
-    // Link to a specific ambulance unit (e.g., "AMB-01")
+    
     private String unitCode;
 
-    // --- Getters and Setters ---
+    //  Getters and Setters 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

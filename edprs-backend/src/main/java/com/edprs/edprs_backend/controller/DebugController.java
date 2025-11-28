@@ -28,7 +28,7 @@ public class DebugController {
         return userRepository.findAll();
     }
 
-    // 2. TEST PASSWORD (To see if "123" actually matches)
+    // 2. TEST PASSWORD 
     @GetMapping("/test")
     public String testPassword(@RequestParam String username, @RequestParam String rawPassword) {
         user u = userRepository.findByUsername(username).orElse(null);

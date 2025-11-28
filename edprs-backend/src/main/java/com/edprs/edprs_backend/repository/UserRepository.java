@@ -1,6 +1,6 @@
 package com.edprs.edprs_backend.repository;
 
-import com.edprs.edprs_backend.model.user; // Renamed from 'user'
+import com.edprs.edprs_backend.model.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

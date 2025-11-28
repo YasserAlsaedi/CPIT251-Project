@@ -1,7 +1,7 @@
 package com.edprs.edprs_backend;
 
-import com.edprs.edprs_backend.model.casee; // Using your class name
-import com.edprs.edprs_backend.model.unit;  // Using your class name
+import com.edprs.edprs_backend.model.casee; 
+import com.edprs.edprs_backend.model.unit;  
 import com.edprs.edprs_backend.repository.CaseRepository;
 import com.edprs.edprs_backend.repository.UnitRepository;
 import com.edprs.edprs_backend.service.CaseService;

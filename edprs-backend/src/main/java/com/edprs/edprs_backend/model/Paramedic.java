@@ -21,9 +21,8 @@ public class Paramedic {
     @JoinColumn(name = "unit_id")
     private unit unit; // Link the paramedic to their assigned unit
 
-    // Getters and Setters (Omitted for brevity, but required)
-    // You should generate these in your IDE (IntelliJ/Eclipse)
-
+    // Getters and Setters
+   
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getUsername() { return username; }

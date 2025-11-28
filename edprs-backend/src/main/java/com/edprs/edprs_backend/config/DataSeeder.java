@@ -1,7 +1,7 @@
 package com.edprs.edprs_backend.config;
 
-import com.edprs.edprs_backend.model.unit; // Using your lowercase class name
-import com.edprs.edprs_backend.model.user; // Using your lowercase class name
+import com.edprs.edprs_backend.model.unit; 
+import com.edprs.edprs_backend.model.user; 
 import com.edprs.edprs_backend.repository.UnitRepository;
 import com.edprs.edprs_backend.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class DataSeeder {
                                    PasswordEncoder passwordEncoder) {
         return args -> {
             
-            // --- 1. CREATE SUPERVISOR ---
+            //  1. CREATE SUPERVISOR 
             if (userRepo.findByUsername("admin").isEmpty()) {
                 user admin = new user();
                 admin.setUsername("admin");
@@ -28,13 +28,13 @@ public class DataSeeder {
                 System.out.println("✅ Admin Created");
             }
 
-            // --- 2. CREATE UNITS (AMB-01 to AMB-04) ---
+            //  2. CREATE UNITS (AMB-01 to AMB-04)
             createUnit(unitRepo, "AMB-01", 21.5433, 39.1728);
             createUnit(unitRepo, "AMB-02", 21.5500, 39.1800);
             createUnit(unitRepo, "AMB-03", 21.5600, 39.1900);
             createUnit(unitRepo, "AMB-04", 21.5700, 39.2000);
 
-            // --- 3. CREATE PARAMEDICS (2 per Unit) ---
+            //  3. CREATE PARAMEDICS (2 per Unit) 
             // Unit 1
             createMedic(userRepo, passwordEncoder, "medic1", "AMB-01");
             createMedic(userRepo, passwordEncoder, "medic2", "AMB-01");
@@ -53,7 +53,7 @@ public class DataSeeder {
         };
     }
 
-    // --- HELPER FUNCTIONS TO KEEP CODE CLEAN ---
+    //  HELPER FUNCTIONS TO KEEP CODE CLEAN 
 
     private void createUnit(UnitRepository repo, String code, double lat, double lon) {
         if (repo.findByCode(code) == null) {
@@ -67,7 +67,7 @@ public class DataSeeder {
         }
     }
 
- // Inside DataSeeder.java
+ 
 
     private void createMedic(UserRepository repo, PasswordEncoder encoder, String username, String unitCode) {
         // 1. Check if user exists

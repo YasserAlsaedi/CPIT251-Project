@@ -2,7 +2,7 @@ package com.edprs.edprs_backend.controller;
 
 import com.edprs.edprs_backend.model.unit;
 import com.edprs.edprs_backend.repository.UnitRepository;
-import org.springframework.messaging.simp.SimpMessagingTemplate; // <--- NEW IMPORT
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import java.util.List;
 public class UnitController {
 
     private final UnitRepository unitRepository;
-    private final SimpMessagingTemplate messagingTemplate; // <--- NEW TOOL
+    private final SimpMessagingTemplate messagingTemplate; 
 
     // Constructor Injection
     public UnitController(UnitRepository unitRepository, SimpMessagingTemplate messagingTemplate) {
@@ -35,7 +35,7 @@ public class UnitController {
         return unitRepository.save(unit);
     }
 
-    // --- UPDATED: STATUS CHANGE (Triggers Refresh) ---
+    //  UPDATED: STATUS CHANGE (Triggers Refresh) 
     @PutMapping("/{id}/status")
     public unit updateStatus(@PathVariable Long id, @RequestParam String status) {
         unit u = unitRepository.findById(id)
@@ -44,13 +44,13 @@ public class UnitController {
         u.setStatus(status);
         unit savedUnit = unitRepository.save(u);
 
-        // 🔔 ALERT THE DASHBOARD
+        //  ALERT THE DASHBOARD
         messagingTemplate.convertAndSend("/topic/dashboard-updates", "Unit Status Changed: " + status);
 
         return savedUnit;
     }
 
-    // --- UPDATED: GPS CHANGE (Triggers Map Move) ---
+    //  UPDATED: GPS CHANGE (Triggers Map Move) 
     @PutMapping("/{id}/location")
     public unit updateLocation(@PathVariable Long id, 
                                @RequestParam Double lat, 
@@ -64,7 +64,7 @@ public class UnitController {
         
         unit savedUnit = unitRepository.save(u);
         
-        // 🔔 ALERT THE DASHBOARD (So the icon moves instantly)
+        //  ALERT THE DASHBOARD (So the icon moves instantly)
         // We send to a specific channel so we don't reload the WHOLE list, just the map markers if we wanted optimization.
         // For now, reloading the dashboard is fine.
         messagingTemplate.convertAndSend("/topic/dashboard-updates", "Unit Moved");

@@ -1,7 +1,7 @@
 package com.edprs.edprs_backend.service;
 
-import com.edprs.edprs_backend.model.casee; // Or 'casee' if you haven't renamed it
-import com.edprs.edprs_backend.model.unit;          // Or 'unit'
+import com.edprs.edprs_backend.model.casee; 
+import com.edprs.edprs_backend.model.unit;        
 import com.edprs.edprs_backend.repository.CaseRepository;
 import com.edprs.edprs_backend.repository.UnitRepository;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -24,12 +24,12 @@ public class CaseService {
         this.messagingTemplate = messagingTemplate;
     }
 
-    // --- 1. GET ALL CASES (For "Checking") ---
+    //  1. GET ALL CASES 
     public List<casee> getAllCases() {
         return caseRepository.findAll();
     }
     
-    // --- 2. CREATE (Existing) ---
+    //  2. CREATE 
     @Transactional
     public casee createCase(casee c) {
         c.setCaseNumber("CASE-" + System.currentTimeMillis());
@@ -106,7 +106,7 @@ public class CaseService {
         return caseRepository.save(c);
     }
 
-    // --- 3. EDIT CASE DETAILS (New) ---
+    //  3. EDIT CASE DETAILS 
     public casee updateCaseDetails(Long id, casee updatedData) {
     	casee c = caseRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Case not found ID: " + id));
@@ -121,7 +121,7 @@ public class CaseService {
         return caseRepository.save(c);
     }
 
- // --- 4. DELETE CASE (Updated with Real-Time Alert) ---
+ //  4. DELETE CASE (Updated with Real-Time Alert) 
     @Transactional
     public void deleteCase(Long id) {
     	casee c = caseRepository.findById(id)
@@ -146,7 +146,7 @@ public class CaseService {
         messagingTemplate.convertAndSend("/topic/dashboard-updates", "Case Deleted");
     }
     
- // --- NEW: REJECT LOGIC ---
+ //  REJECT LOGIC 
     @Transactional
     public void rejectCase(Long caseId) {
     	casee c = caseRepository.findById(caseId)

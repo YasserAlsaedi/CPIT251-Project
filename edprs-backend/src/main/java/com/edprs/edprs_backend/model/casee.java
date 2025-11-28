@@ -138,15 +138,15 @@ public class casee {
         this.createdAt = createdAt;
     }
     
- // ... existing fields ...
+ 
 
-    private String llocation; // Text description
+    private String llocation; 
 
-    // --- NEW: Exact GPS Location ---
+    //  Exact GPS Location 
     private Double latitude;
     private Double longitude;
 
-    // --- Add Getters and Setters ---
+    
     public Double getLatitude() { return latitude; }
     public void setLatitude(Double latitude) { this.latitude = latitude; }
 

@@ -12,20 +12,20 @@ public class unit {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String code; // e.g., AMB-01
+    private String code; 
 
     // READY / ON_MISSION / NOT_READY
     @Column(nullable = false)
     private String status;
     
-    // --- NEW: Real-World GPS Tracking ---
+    //  Real-World GPS Tracking 
     private Double latitude;
     private Double longitude;
     
     // To track if the unit has gone offline (Signal Lost)
     private LocalDateTime lastLocationUpdate;
 
-    // --- Getters and Setters ---
+    //  Getters and Setters 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

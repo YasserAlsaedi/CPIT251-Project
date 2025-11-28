@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Turn off hacking protection for demo
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll() // <--- THE KEY: ALLOW EVERYTHING
+                .anyRequest().permitAll() //  THE KEY: ALLOW EVERYTHING
             );
         return http.build();
     }
