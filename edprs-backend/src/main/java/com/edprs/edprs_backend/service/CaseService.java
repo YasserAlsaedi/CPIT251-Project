@@ -29,7 +29,7 @@ public class CaseService {
         return caseRepository.findAll();
     }
     
-    //  2. CREATE. 
+    //  2. CREATE 
     @Transactional
     public casee createCase(casee c) {
         c.setCaseNumber("CASE-" + System.currentTimeMillis());
