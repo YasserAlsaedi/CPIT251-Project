@@ -24,7 +24,7 @@ public class CaseService {
         this.messagingTemplate = messagingTemplate;
     }
 
-    //  1. GET ALL CASES .
+    //  1. GET ALL CASES 
     public List<casee> getAllCases() {
         return caseRepository.findAll();
     }
