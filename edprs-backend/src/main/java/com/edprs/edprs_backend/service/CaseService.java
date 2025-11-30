@@ -108,18 +108,26 @@ public class CaseService {
 
     //  3. EDIT CASE DETAILS 
     public casee updateCaseDetails(Long id, casee updatedData) {
-    	casee c = caseRepository.findById(id)
+        casee c = caseRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Case not found ID: " + id));
 
         // Update fields
         c.setDescription(updatedData.getDescription());
-        c.setLocation(updatedData.getLocation());
+        c.setLocation(updatedData.getLocation()); // This is the text location
         c.setUrgency(updatedData.getUrgency());
         c.setType(updatedData.getType());
-        // We do NOT update 'status' or 'assignedUnit' here (use updateStatus for that)
+        c.setMrn(updatedData.getMrn());
+        c.setCallerPhone(updatedData.getCallerPhone());
+
+        // --- ADD THESE TWO LINES ---
+        c.setLatitude(updatedData.getLatitude());
+        c.setLongitude(updatedData.getLongitude());
+        // ---------------------------
         
         return caseRepository.save(c);
     }
+    
+    
 
  //  4. DELETE CASE (Updated with Real-Time Alert) 
     @Transactional

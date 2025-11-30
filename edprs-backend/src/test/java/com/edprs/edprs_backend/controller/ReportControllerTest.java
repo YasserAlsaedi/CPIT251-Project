@@ -3,6 +3,7 @@ package com.edprs.edprs_backend.controller;
 import com.edprs.edprs_backend.model.MedicalReport;
 import com.edprs.edprs_backend.model.casee; 
 import com.edprs.edprs_backend.model.unit;  
+
 import com.edprs.edprs_backend.repository.CaseRepository;
 import com.edprs.edprs_backend.repository.ReportRepository;
 import com.edprs.edprs_backend.repository.UnitRepository;
@@ -17,6 +18,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -83,4 +86,6 @@ public class ReportControllerTest {
         // Check 4: Dashboard was notified via WebSocket
         verify(messagingTemplate).convertAndSend(eq("/topic/dashboard-updates"), anyString());
     }
+    
+  
 }
