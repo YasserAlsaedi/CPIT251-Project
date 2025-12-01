@@ -11,7 +11,7 @@ public class casee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Human-readable case identifier (e.g., CASE-123456).
+    // Human-readable case identifier (e.g., CASE-123456)
     @Column(nullable = false, unique = true)
     private String caseNumber;
 
