@@ -73,7 +73,7 @@ public class CaseServiceTest {
         java.util.List<casee> result = caseService.getActiveCases();
 
         // 4. Verify Results
-        assertEquals(2, result.size()); // We expect 2 cases
+        assertEquals(2, result.size()); 
         verify(caseRepository).findByStatusNot("Completed"); // Ensure the DB was called correctly
     }
     
@@ -101,9 +101,9 @@ public class CaseServiceTest {
         casee result = caseService.acceptCase(caseId, unitId);
 
         // 4. VERIFY
-        assertEquals("Accepted", result.getStatus());       // Case should be Accepted
-        assertEquals("ON_MISSION", mockUnit.getStatus());   // Unit should be ON_MISSION
-        assertEquals(mockUnit, result.getAssignedUnit());   // Unit should be linked
+        assertEquals("Accepted", result.getStatus());       
+        assertEquals("ON_MISSION", mockUnit.getStatus());   
+        assertEquals(mockUnit, result.getAssignedUnit());   
         
         // Verify DB saves and Alert sent
         verify(unitRepository).save(mockUnit);
@@ -119,7 +119,7 @@ public class CaseServiceTest {
         casee mockCase = new casee();
         mockCase.setId(caseId);
         
-        // Create a fake unit attached to it (so we can test if it gets freed)
+       
         unit mockUnit = new unit();
         mockUnit.setCode("AMB-01");
         mockUnit.setStatus("ON_MISSION");
