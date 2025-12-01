@@ -12,7 +12,7 @@ public class unit {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String code;   // Unique unit identifier (e.g., AMB-01, RRT-07)
+    private String code;   // Unique unit identifier (e.g., AMB-01, RRT-07).
 
     // Current operational state of the unit
     // Possible values: READY / ON_MISSION / NOT_READY
