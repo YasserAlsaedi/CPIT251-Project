@@ -22,13 +22,13 @@ public class DebugController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // 1. LIST ALL USERS (To see if DataSeeder actually ran)
+    // 1. GET ALL USERS – useful for checking that DataSeeder inserted the accounts
     @GetMapping("/users")
     public List<user> listAllUsers() {
         return userRepository.findAll();
     }
 
-    // 2. TEST PASSWORD 
+    // 2. VERIFY PASSWORD – checks if a raw password matches the stored hash for a user
     @GetMapping("/test")
     public String testPassword(@RequestParam String username, @RequestParam String rawPassword) {
         user u = userRepository.findByUsername(username).orElse(null);
