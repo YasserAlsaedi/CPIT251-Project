@@ -13,7 +13,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Turn off hacking protection for demo
+            .csrf(csrf -> csrf.disable()) // Turn off hacking protection for demo.
             .authorizeHttpRequests(auth -> auth
                 .anyRequest().permitAll() //  THE KEY: ALLOW EVERYTHING
             );
