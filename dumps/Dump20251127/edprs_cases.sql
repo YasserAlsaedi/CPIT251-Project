@@ -1,3 +1,7 @@
+-- EDPRS Project - MySQL dump for `edprs` database
+-- This dump contains the schema and seed data for the `cases` table
+-- The table is used by the backend to store emergency/transport case records
+
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
 -- Host: localhost    Database: edprs
@@ -25,6 +29,7 @@ SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '942e6b7d-be52-11f0-9a4a-089798e33a5d:1-
 
 --
 -- Table structure for table `cases`
+-- Each row represents one patient/emergency case created by the supervisor
 --
 
 DROP TABLE IF EXISTS `cases`;
@@ -54,7 +59,8 @@ CREATE TABLE `cases` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cases`
+-- Seed data for table `cases`
+-- These rows are example cases used for testing and demo purposes
 --
 
 LOCK TABLES `cases` WRITE;
@@ -73,4 +79,5 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- End of EDPRS `cases` table dump
 -- Dump completed on 2025-11-27  7:17:10
