@@ -18,47 +18,45 @@ public class CaseController {
         this.caseService = caseService;
     }
 
-    // 1. ADD CASE (POST)
+    // 1. CREATE NEW CASE (POST) – supervisor only
     @PostMapping
     @PreAuthorize("hasRole('SUPERVISOR')")
     public casee createCase(@RequestBody casee c) {
         return caseService.createCase(c);
     }
 
-    // 2. CHECK CASES, ALL (GET)
+    // 2. GET ALL CASES (GET) – returns every case in the system
     @GetMapping
     public List<casee> getAllCases() {
         return caseService.getAllCases();
     }
 
-    // 3. CHECK CASES, ACTIVE ONLY (GET)
+    // 3. GET ONLY ACTIVE CASES (GET) – used for currently open cases
     @GetMapping("/active")
     public List<casee> getActive() {
         return caseService.getActiveCases();
     }
 
-    
-    // 4. UPDATE STATUS (PUT)
-
+    // 4. ACCEPT CASE (PUT) – assign case to a specific unit
     @PutMapping("/{id}/accept")
     public casee acceptCase(@PathVariable Long id, @RequestParam Long unitId) {
         return caseService.acceptCase(id, unitId);
     }
 
-    // 5. EDIT CASE DETAILS (PUT)
+    // 5. UPDATE CASE DETAILS (PUT) – supervisor can edit case information
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('SUPERVISOR')")
     public casee updateDetails(@PathVariable Long id, @RequestBody casee c) {
         return caseService.updateCaseDetails(id, c);
     }
     
- //   reject endpoint 
+    // 6. REJECT CASE (PUT) – mark case as rejected
     @PutMapping("/{id}/reject")
     public void rejectCase(@PathVariable Long id) {
         caseService.rejectCase(id);
     }
 
-    // 6. DELETE CASE (DELETE)
+    // 7. DELETE CASE (DELETE) – supervisor can completely remove a case
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('SUPERVISOR')")
     public void deleteCase(@PathVariable Long id) {
